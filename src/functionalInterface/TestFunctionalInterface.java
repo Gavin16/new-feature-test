@@ -2,9 +2,11 @@ package functionalInterface;
 
 import java.io.StringReader;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+
 
 /**
  * @Title: new-feature-test
@@ -34,7 +36,7 @@ public class TestFunctionalInterface {
          */
 
         // 找出list中所有的 张姓 同学
-        List<String> demoList = Arrays.asList("张小明", "赵二狗", "谢阿三", "陈小花", "王小七","张聪明","郭大路");
+        List<String> demoList = Arrays.asList("张小明", "赵十八", "谢阿三", "陈小花", "王小七","张聪明","郭大路");
         checkName(demoList,(e -> {return e.startsWith("张");}),e->{
             System.out.println(e);
         });

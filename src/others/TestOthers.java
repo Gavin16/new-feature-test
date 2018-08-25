@@ -1,6 +1,5 @@
 package others;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
@@ -35,5 +34,10 @@ public class TestOthers {
         byte[] textBytes = text.getBytes();
         byte[] encodedBytes = encoder.encode(textBytes);
         System.out.println(encoder.encodeToString(encodedBytes));
+
+
     }
+
+
+
 }

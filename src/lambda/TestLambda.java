@@ -1,8 +1,10 @@
 package lambda;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -29,6 +31,15 @@ public class TestLambda {
         // lambda表达式的赋给Function 然后再使用 Function instance .apply() 方法调用
         Function<Integer,String> int2str = String::valueOf;
         Function<List<Integer>,Integer> sumup = (List<Integer> iList) -> {Integer s = 0;for(Integer i:iList){ s+=i;} return s; };
+
+        List<String> strList = Arrays.asList(new String[]{"Lambdas", "Default Method", "Stream API", "Java"});
+        Predicate<List<String>> pred = (List<String> inList) -> inList.contains("Java");
+
+        Consumer<List<String>> printLen = (List<String> inList) -> {for(String str:strList){System.out.println(str.length());}} ;
+        printLen.accept(strList);
+
+        System.out.println("字符串list中是否包含Java字样:" + pred.test(strList));
+
         //
         Integer num1 = 12345;
         List<Integer> nList = Arrays.asList(new Integer[] {3,2,1,9,10,6,7,8,4,5});
@@ -75,6 +86,30 @@ public class TestLambda {
         Arrays.sort(features2,(str1,str2)-> str1.compareToIgnoreCase(str2));
         Arrays.asList(features2).forEach(e -> System.out.println(e));
 
+        // 用list中的map排序,
+        List<Map<String,String>> mapList1 = new ArrayList<>();
+
+        HashMap<String,String> m1 = new HashMap<>();
+        HashMap<String,String> m2 = new HashMap<>();
+        HashMap<String,String> m3 = new HashMap<>();
+
+        m1.put("code","SZ");
+        m2.put("code","GZ");
+        m3.put("code","GD");
+
+        mapList1.add(m1);
+        mapList1.add(m2);
+        mapList1.add(m3);
+
+        System.out.println(mapList1.toString());
+        mapList1.sort(Comparator.comparing(t1 -> t1.get("code")));
+        System.out.println(mapList1.toString());
+
+        /**
+         * 其他函数式接口
+         */
+        ToIntFunction<List<String>> countElem = (List<String> strList1) -> {return strList1.size();};
+        System.out.println("total elements: "+countElem.applyAsInt(strList));
     }
 
 

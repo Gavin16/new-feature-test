@@ -9,9 +9,5 @@ package functionalInterface;
  */
 @FunctionalInterface
 interface CheckFamilyName<T extends  String> {
-    /**
-     *
-     *
-     */
     boolean checkFN(T t);
 }
